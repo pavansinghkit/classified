@@ -6,7 +6,28 @@ import until.enumeration.ClassifiedStatus;
 
 public class Classified {
 
-	private int classifiedId;
+	public Classified(Integer classifiedId, String title, double price, String description, String category, Date createdAt,
+			String createdBy, ClassifiedStatus status) {
+		//super();
+		this.classifiedId = classifiedId;
+		this.title = title;
+		this.price = price;
+		this.description = description;
+		this.category = category;
+		this.createdAt = createdAt;
+		this.createdBy = createdBy;
+		this.status = status;
+	}
+	
+	public Classified(String title, double price, String description, String category, Date createdAt,
+			String createdBy, ClassifiedStatus status) {
+		this(null, title, price, description, category, createdAt, createdBy, status);
+	}
+	
+	public Classified() {
+	}
+	
+	private Integer classifiedId;
 	private String title;
 	private double price;
 	private String description;
@@ -67,9 +88,9 @@ public class Classified {
 	//toString function called
 	@Override
 	public String toString() {
-		return "Classified [classifiedId=" + classifiedId + ", title=" + title + ", price=" + price + ", description="
+		return "{classifiedId=" + classifiedId + ", title=" + title + ", price=" + price + ", description="
 				+ description + ", category=" + category + ", createdAt=" + createdAt + ", createdBy=" + createdBy
-				+ ", status=" + status + "]";
+				+ ", status=" + status + "}\n";
 	}
 }
 
