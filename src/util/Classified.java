@@ -2,11 +2,12 @@ package util;
 
 import java.util.Date;
 
+import until.enumeration.CategoryType;
 import until.enumeration.ClassifiedStatus;
 
 public class Classified {
 
-	public Classified(Integer classifiedId, String title, double price, String description, String category, Date createdAt,
+	public Classified(Integer classifiedId, String title, double price, String description, CategoryType category, Date createdAt,
 			String createdBy, ClassifiedStatus status) {
 		//super();
 		this.classifiedId = classifiedId;
@@ -19,7 +20,7 @@ public class Classified {
 		this.status = status;
 	}
 	
-	public Classified(String title, double price, String description, String category, Date createdAt,
+	public Classified(String title, double price, String description, CategoryType category, Date createdAt,
 			String createdBy, ClassifiedStatus status) {
 		this(null, title, price, description, category, createdAt, createdBy, status);
 	}
@@ -31,7 +32,8 @@ public class Classified {
 	private String title;
 	private double price;
 	private String description;
-	private String category;
+	//private String category;
+	private CategoryType category = CategoryType.OTHERS;
 	private Date createdAt;
 	private String createdBy;
 	private ClassifiedStatus status = ClassifiedStatus.NA;
@@ -61,10 +63,10 @@ public class Classified {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getCategory() {
+	public CategoryType getCategory() {
 		return category;
 	}
-	public void setCategory(String category) {
+	public void setCategory(CategoryType category) {
 		this.category = category;
 	}
 	public Date getCreatedAt() {
@@ -91,6 +93,11 @@ public class Classified {
 		return "{classifiedId=" + classifiedId + ", title=" + title + ", price=" + price + ", description="
 				+ description + ", category=" + category + ", createdAt=" + createdAt + ", createdBy=" + createdBy
 				+ ", status=" + status + "}\n";
+	}
+
+	public void setId(Integer classifiedId) {
+		this.classifiedId= classifiedId;
+		
 	}
 }
 

@@ -19,8 +19,6 @@ public class log {
 		try {
 				FileWriter fileWriter = new FileWriter
 				("C:\\Users\\sinpavan\\Desktop\\Database_login.txt", true);
-				
-				// CREATE A PATH "C:\\Users\\bordoloa\\Desktop\\LOGS\\" FOR LOGS
 				PrintWriter printWriter = new PrintWriter(fileWriter);
 				
 				printWriter.println("Connection: "+count+"   "+msg+"   "+dtf.format(now));  

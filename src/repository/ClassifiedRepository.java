@@ -6,6 +6,8 @@ import util.Classified;
 
 public interface ClassifiedRepository {
 	
-	List<Classified> getClassifiedList(); 
+	List<Classified> getClassifiedList(); //print
+
+	Classified createClassified(Classified classified); //create
 
 }
