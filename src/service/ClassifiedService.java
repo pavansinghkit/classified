@@ -5,8 +5,9 @@ import java.util.List;
 import util.Classified;
 
 public interface ClassifiedService {
-	Classified saveOrUpdate(Classified classified);
-	List<Classified> getClassifiedList();
-	Classified createClassified (Classified classified);
+	Classified updateClassified(Classified classified);  //update
+	List<Classified> getClassifiedList();      //print
+	List<Classified> getClassifiedListByUserName(String userName);     //print for user
+	Classified createClassified (Classified classified);  //create
 }
 

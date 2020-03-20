@@ -8,7 +8,7 @@ import until.enumeration.ClassifiedStatus;
 public class Classified {
 
 	public Classified(Integer classifiedId, String title, double price, String description, CategoryType category, Date createdAt,
-			String createdBy, ClassifiedStatus status) {
+			String createdBy, ClassifiedStatus status, Date modifiedAt, String modifiedBy) {
 		//super();
 		this.classifiedId = classifiedId;
 		this.title = title;
@@ -18,11 +18,13 @@ public class Classified {
 		this.createdAt = createdAt;
 		this.createdBy = createdBy;
 		this.status = status;
+		this.modifiedAt = modifiedAt;
+		this.modifiedBy = modifiedBy;
 	}
 	
 	public Classified(String title, double price, String description, CategoryType category, Date createdAt,
-			String createdBy, ClassifiedStatus status) {
-		this(null, title, price, description, category, createdAt, createdBy, status);
+			String createdBy, ClassifiedStatus status, Date modifiedAt, String modifiedBy) {
+		this(null, title, price, description, category, createdAt, createdBy, status, modifiedAt, modifiedBy);
 	}
 	
 	public Classified() {
@@ -36,6 +38,8 @@ public class Classified {
 	private CategoryType category = CategoryType.OTHERS;
 	private Date createdAt;
 	private String createdBy;
+	private Date modifiedAt;
+	private String modifiedBy;
 	private ClassifiedStatus status = ClassifiedStatus.NA;
 	
 	//Getter And Setter
@@ -81,6 +85,18 @@ public class Classified {
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
+	public Date getModifiedAt() {
+		return modifiedAt;
+	}
+	public void setModifiedAt(Date modifiedAt) {
+		this.modifiedAt = modifiedAt;
+	}
+	public String getModifiedBy() {
+		return modifiedBy;
+	}
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
 	public ClassifiedStatus getStatus() {
 		return status;
 	}
@@ -92,12 +108,11 @@ public class Classified {
 	public String toString() {
 		return "{classifiedId=" + classifiedId + ", title=" + title + ", price=" + price + ", description="
 				+ description + ", category=" + category + ", createdAt=" + createdAt + ", createdBy=" + createdBy
-				+ ", status=" + status + "}\n";
+				+ ", status=" + status + ", modifiedAt=" + modifiedAt + ", modifiedBy=" + modifiedBy + "}\n";
 	}
 
 	public void setId(Integer classifiedId) {
 		this.classifiedId= classifiedId;
-		
 	}
 }
 

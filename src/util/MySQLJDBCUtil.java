@@ -12,10 +12,11 @@ public class MySQLJDBCUtil {
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("Connection stablished with mysql******");
+            System.out.println("******Connection stablished with mysql******");
+            System.out.println();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            System.out.println("Unable to connect to mysqlxxxxxxxx");
+            System.out.println("Unable to connect to mysql....");
         }
         return conn;
     }
