@@ -15,6 +15,7 @@ Requirement:
 3: To update the existing classified (Only Active classified)
 
 4: Conform below payment mode :
+
         a: NET_BANKING
         b:CREDIT_OR_DEBIT_CARD
         c:CASH
