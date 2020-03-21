@@ -23,14 +23,14 @@ step 1: User will be asked to choose the below service:
         B: updateClassified
         C: printClassifiedList
         
-# If user selects option A:
+1) If user selects option A:
 User will be asked to select category (from softlines, hardlines, consumables, media, others), price, Title, discription along with his/her userId. After that Connection will stablised with MySqlJDBC and new classifiedId (primary key) will be generated and classified will be added in classified_info table with default status NA, created_at (current time) and created_by(User_name) . Will get popup saying that classified has been added successfully, do you want to add more? y/n. If user will select y/Y, again same process will be initiated or if user select N/n, Application will terminate. The status will be changed after admin approvals. 
 Post execution connect will be closed.
 
-# If user selects option B:
+2) If user selects option B:
 User will be asked to enter his/her user_name, Connection will stablised with MySqlJDBC. Will execute query if the entered user_name is having any ACTIVE classifiedId or not to update. If there is no classifiedId with entered name will get popup, "No classified found for user name : user_name". If there is any ACTIVE classifiedId present in table then it will show the all available classifiedId and will ask to select classifiedId you want to update. Post selecting classifiedId again User will be asked to select category (from softlines, hardlines, consumables, media, others), price, Title, discription. The selected classifiedId (primary key) will be updated in classified_info table with entered changed adding 2 new column Modified_at (modified time) and modified_by(midifier_name). After updating 1 classified we Will get popup saying that Your classified has been updated successfully, but you can see only if this is approved by Admin, do you want to add more? y/n. If user will select y/Y, again same process will be initiated or if user select N/n,  connect will be closed and Application will terminate.
 
-# If user selects option C:
+3) If user selects option C:
 Connection will stablised with MySqlJDBC and will fetch all data from classified_info table irrespective to the status and user. Post execution connect will be closed and application will be terminated.
 
 Thanks, 
