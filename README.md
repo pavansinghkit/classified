@@ -7,6 +7,7 @@ This project is totally based on classified problem (An Internal OLX kind of Sol
 // In this part we will play around classified_info table 
 
 Requirement:
+
 1: To add a new classified (By Admin/ Active User)
 
 2: To see all classified (all classified for Admin/ Only Active classified for User)
