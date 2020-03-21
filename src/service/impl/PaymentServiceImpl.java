@@ -20,7 +20,6 @@ public class PaymentServiceImpl implements PaymentService {
 			classifiedRepository.updateStatus(classifiedId, ClassifiedStatus.SOLD.toString());
 			response = String.format("Payment successfull with %s", paymentMode);
 		}
-		
 		return response;
 		
 		

@@ -173,6 +173,7 @@ public class ClassifiedRepositoryImpl implements ClassifiedRepository {
 				// status update
 				pstmt.setString(1, status);
 				pstmt.setInt(2, classifiedId);
+				int paymentStatus = pstmt.executeUpdate();
 				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();

@@ -15,6 +15,7 @@ public class PaymentApp {
 		Scanner scan = new Scanner (System.in);
 		System.out.println("Welcome to payment Service");
 		PaymentService paymentService= new PaymentServiceImpl();
+		//get classifieds from intrest table if classifiedId available proceed
 		System.out.println("Please enter classifiedID");
 		int cID = scan.nextInt();
 		classified.setClassifiedId(cID); //get cID
