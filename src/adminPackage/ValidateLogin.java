@@ -1,6 +1,28 @@
+
+/*@bordoloa*/
+/*This class is not handling default cases
+ * 
+ * EG: input to main menu "asdadada", "", option >5 
+ * 
+ * Exception handling is required
+ * */
+/*THIS IS YOU HIGHEST LEVEL PACKAGE FOR ADMIN
+ * 
+ * HANDLE EXCEPTIONS HERE FOR ALL ADMIN ISSUES FOR ALL INSIDE LAYERS
+ * 
+ * DONOT THROW EXCEPTION TO TOP LAYER FOR ADMIN RELATED ISSUES AS 
+ * TOP LAYER IS DESIGNED FOR DB RELATED EXCEPTIONS
+ * 
+ * ANY EXCEPTION FROM "db_package.MysqlCon.connect().connection" WILL BE HANDLED AT TOP LAYER SO NO NEED TO WORRY.
+ * */
+
+
 package adminPackage;
 
 import DBQueries.DBQueryExecuter;
+import logs.DbLog;
+import repository.impl.ClassifiedRepositoryImpl;
+import util.Classified;
 
 import java.util.Scanner;
 
@@ -17,6 +39,7 @@ public class ValidateLogin implements ValidateLoginInterface {
     public String getChoice(){return this.choice;}
 
     public void login() throws InterruptedException {
+    	System.out.println("Welcome to Amazon IntraClassifieds! Please Login to Continue");
         Scanner sc = new Scanner(System.in);
         //Validate UserName
         choice = "Y";
@@ -48,9 +71,9 @@ public class ValidateLogin implements ValidateLoginInterface {
                             String ch = sc.next();
                             if("A".equalsIgnoreCase(ch)) {
                                 System.out.println("Here's a list of Users with Pending state:");
-                                Thread.sleep(400);
+                                //Thread.sleep(400);
                                 DBQueryExecuter.getUsersData();
-                                Thread.sleep(400);
+                                //Thread.sleep(400);
                                 System.out.println("Enter \"Y\" to approve");
                                 String choose = sc.next();
                                 if("Y".equalsIgnoreCase(choose)) {
@@ -131,8 +154,8 @@ public class ValidateLogin implements ValidateLoginInterface {
                             if("Y".equalsIgnoreCase(ch)) {
                                 System.out.println("Logout Successful!");
                                 System.out.println("");
-                                Thread.sleep(250);
-                                exit(0);
+                                //Thread.sleep(250);
+                                return;
                             } if ("N".equalsIgnoreCase(ch)) {
                                 Thread.sleep(250);
                                 break;

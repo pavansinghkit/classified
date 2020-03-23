@@ -1,9 +1,6 @@
 package service.impl;
 
-import repository.ClassifiedRepository;
-import repository.impl.ClassifiedRepositoryImpl;
 import service.PaymentService;
-import until.enumeration.ClassifiedStatus;
 import until.enumeration.PaymentType;
 
 public class PaymentServiceImpl implements PaymentService {
@@ -16,13 +13,9 @@ public class PaymentServiceImpl implements PaymentService {
 		if (paymentMode == null) {
 			response = "Please enter valid payment option";
 		} else {
-			ClassifiedRepository classifiedRepository = new ClassifiedRepositoryImpl();
-			classifiedRepository.updateStatus(classifiedId, ClassifiedStatus.SOLD.toString());
 			response = String.format("Payment successfull with %s", paymentMode);
 		}
+		System.out.println(String.format("doPayment message : %s for classifiedId : %d", response, classifiedId));
 		return response;
-		
-		
-		
 	}
 }

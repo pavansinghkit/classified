@@ -2,7 +2,7 @@ package until.enumeration;
 
 public enum CategoryType {
 	SOFTLINES(1, "softlines"), HARDLINES(2, "hardlines"), CONSUMABLES(3, "consumables"), MEDIA(4, "media products"),
-	OTHERS(5, "If you are nor sure about your product please choes this");
+	OTHERS(5, "Others (If you are NOT sure about your product please choose this)");
 
 	CategoryType(int index, String categoryType) {
 		this.categoryType = categoryType;

@@ -53,8 +53,7 @@ public class ClassifiedRepositoryImpl implements ClassifiedRepository {
 		return classifiedList;
 	}
 
-	// ***************************print only for current
-	// USER****************************//
+	// *******************print only for currentUSER****************************//
 
 	@Override
 	public List<Classified> getClassifiedListByUserName(String userName) {
@@ -128,7 +127,7 @@ public class ClassifiedRepositoryImpl implements ClassifiedRepository {
 		return classified;
 	}
 
-	// ***************************update******************************//
+	// ***************************update all fields******************************//
 	private static String sqlUpdate = ("update classified_info set title=?,price=?,description=?,category=?, modified_at =?, modified_by= ? where classified_id=?");
 
 	@Override
@@ -160,6 +159,125 @@ public class ClassifiedRepositoryImpl implements ClassifiedRepository {
 		}
 		return classified;
 	}
+	
+	// ***************************update title******************************//
+
+	private static String sqlUpdateTitle = ("update classified_info set title=?, modified_at =?, modified_by= ? where classified_id=?");
+
+	@Override
+	public Classified updateClassifiedTitle(Classified classified) {
+		Connection connection = MySQLJDBCUtil.getConnection();
+		if (classified != null) {
+			try (PreparedStatement pstmt = connection.prepareStatement(sqlUpdateTitle)) {
+				// data update
+				pstmt.setString(1, classified.getTitle());
+				pstmt.setDate(2, new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+				pstmt.setString(3, classified.getModifiedBy());
+				pstmt.setInt(4, classified.getClassifiedId());
+				int rowAffected = pstmt.executeUpdate();
+				if (rowAffected < 1) {
+					System.out.println("Invalid Classified Selected! ");
+				} else {
+					System.out.println(
+							"Your classified has been updated successfully, but you can see only if this is approved by Admin");
+				}
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return classified;
+	}
+	// ***************************update Category******************************//
+
+	private static String sqlUpdateCategry = ("update classified_info set category=?, modified_at =?, modified_by= ? where classified_id=?");
+
+	@Override
+	public Classified updateClassifiedCategory(Classified classified) {
+		Connection connection = MySQLJDBCUtil.getConnection();
+		if (classified != null) {
+			try (PreparedStatement pstmt = connection.prepareStatement(sqlUpdateCategry)) {
+				// data update
+				pstmt.setString(1, classified.getCategory().toString());
+				pstmt.setDate(2, new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+				pstmt.setString(3, classified.getModifiedBy());
+				pstmt.setInt(4, classified.getClassifiedId());
+				int rowAffected = pstmt.executeUpdate();
+				if (rowAffected < 1) {
+					System.out.println("Invalid Classified Selected! ");
+				} else {
+					System.out.println(
+							"Your classified has been updated successfully, but you can see only if this is approved by Admin");
+				}
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return classified;
+	}
+	// ***************************update Price******************************//
+		private static String sqlUpdatePrice = ("update classified_info set price=?, modified_at =?, modified_by= ? where classified_id=?");
+
+		@Override
+		public Classified updateClassifiedPrice(Classified classified) {
+			Connection connection = MySQLJDBCUtil.getConnection();
+			if (classified != null) {
+				try (PreparedStatement pstmt = connection.prepareStatement(sqlUpdatePrice)) {
+					// data update
+					pstmt.setDouble(1, classified.getPrice());
+					pstmt.setDate(2, new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+					pstmt.setString(3, classified.getModifiedBy());
+					pstmt.setInt(4, classified.getClassifiedId());
+					int rowAffected = pstmt.executeUpdate();
+					if (rowAffected < 1) {
+						System.out.println("Invalid Classified Selected! ");
+					} else {
+						System.out.println(
+								"Your classified has been updated successfully, but you can see only if this is approved by Admin");
+					}
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return classified;
+		}
+		// ***************************update all discription******************************//
+		private static String sqlUpdatedescription = ("update classified_info set description=?, modified_at =?, modified_by= ? where classified_id=?");
+
+		@Override
+		public Classified updateClassifiedDescription(Classified classified) {
+			Connection connection = MySQLJDBCUtil.getConnection();
+			if (classified != null) {
+				try (PreparedStatement pstmt = connection.prepareStatement(sqlUpdatedescription)) {
+					// data update
+					pstmt.setString(1, classified.getDescription());
+					pstmt.setDate(2, new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+					pstmt.setString(3, classified.getModifiedBy());
+					pstmt.setInt(4, classified.getClassifiedId());
+					int rowAffected = pstmt.executeUpdate();
+					if (rowAffected < 1) {
+						System.out.println("Invalid Classified Selected! ");
+					} else {
+						System.out.println(
+								"Your classified has been updated successfully, but you can see only if this is approved by Admin");
+					}
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return classified;
+		}
 	// change status after payment
 
 	private static final String SQL_STATUS_UPDATE = "update classified_info set status=? where classified_id=?";

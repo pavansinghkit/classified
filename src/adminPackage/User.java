@@ -1,3 +1,11 @@
+
+
+
+
+/*@bordoloa*/
+/*YOU CAN DELETE THIS PACKAGE AND IMPORT ""   user.*   "" PACKAGE
+ * (User class is there with default and parameterized constructors)*/
+
 package adminPackage;
 
 public class User {

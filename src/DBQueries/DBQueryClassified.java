@@ -8,14 +8,34 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
+import db_package.*;
+
+/*  @bordoloa  */
+
+/*  IMPORTING DB_PACKAGE FOR ONE TIME CONNECTION   */
+
+//INSTANCE OF CONNECTION OBJ {db_package.MysqlCon.connect().connection} 
+//TO CONNECT TO DATABASE OR SERVER DATABASE
+
+/*ANY EXCEPTION FROM "db_package.MysqlCon.connect().connection" WILL 
+ * BE HANDLED AT TOP LAYER SO NO NEED TO WORRY.
+ *
+ *THE FUNCTION SHOULD WORK EVEN IF THE EXCEPTION OCCURS. DONT PRINT STACKTRACE. 
+ **/
 
 class DBQueryClassified {
-    private static Connection con;
-    DBQueryClassified() {
-        if(con == null) {
-            MysqlCon obj1 = new MysqlCon();
-            con = obj1.connect();
-        }
+    private static Sql_util_user sql_util_user;
+    
+    public DBQueryClassified(){
+    	
+    	try {
+			sql_util_user=Sql_util_user.InstanceCreation();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			String msg= "Was not able to create Instance of sql_util_user. will happen if "
+					+ " connection is not set up correctly";
+			System.out.println(msg+"  "+e.getMessage()+"  "+e.getClass());
+		}
     }
     public void insert() {
 
@@ -26,9 +46,8 @@ class DBQueryClassified {
     public List<Classifieds> find() {
         List<Classifieds> list = new LinkedList<>();
         try {
-            String sql = "select * from Classifieds where Status = 'Pending'";
-            Statement statement = con.createStatement();
-            ResultSet result = statement.executeQuery(sql);
+            String sql = "select * from classified_info where Status = 'NA'";
+            ResultSet result = sql_util_user.connect_user(sql);
             while (result.next()){
                 Classifieds classified = new Classifieds();
                 classified.setClassified_id(result.getInt(1));
@@ -49,7 +68,7 @@ class DBQueryClassified {
             //System.out.println("Result="+result.getRow());
             return list;
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.getMessage();
         }
         return list;
     }

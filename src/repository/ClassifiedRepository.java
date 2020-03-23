@@ -11,4 +11,8 @@ public interface ClassifiedRepository {
 	List<Classified> getClassifiedList(); //print
 	List<Classified> getClassifiedListByUserName(String userName); //print for specific user
 	void updateStatus(Integer classifiedId, String status);
+	Classified updateClassifiedTitle(Classified classified);
+	Classified updateClassifiedPrice(Classified classified);
+	Classified updateClassifiedCategory(Classified classified);
+	Classified updateClassifiedDescription(Classified classified);
 }
