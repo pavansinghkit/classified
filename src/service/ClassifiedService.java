@@ -14,6 +14,7 @@ public interface ClassifiedService {
 	Classified updateClassifiedPrice(Classified classified);
 	Classified updateClassifiedTitle(Classified classified);
 	Classified updateClassifiedDescription(Classified classified);
+	Classified createClassifiedAdmin(Classified classified) throws SQLException; //create for admin
 
 }
 

@@ -1,22 +1,15 @@
-
-
-
-
-/*@bordoloa*/
-/*YOU CAN DELETE THIS PACKAGE AND IMPORT ""   user.*   "" PACKAGE
- * (User class is there with default and parameterized constructors)*/
-
 package adminPackage;
 
 public class User {
     String name, status;
     String password;
-    int phone_num;
+    long phone_num;
 
     public String getStatus() {
         return status;
     }
-    public void setStatus(String string) {
+
+    public void setStatus(String status) {
         this.status = status;
     }
     public String getName() {
@@ -35,11 +28,11 @@ public class User {
         this.password = password;
     }
 
-    public int getPhone_num() {
+    public long getPhone_num() {
         return phone_num;
     }
 
-    public void setPhone_num(int phone_num) {
+    public void setPhone_num(long phone_num) {
         this.phone_num = phone_num;
     }
 

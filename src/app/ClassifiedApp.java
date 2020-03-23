@@ -33,8 +33,8 @@ public class ClassifiedApp {
 
 	private static String userName;
 
-	// create classified
-	private static void createClassified(ClassifiedService classifiedService, Scanner scan){
+	// create classified for user
+	public static void createClassified(ClassifiedService classifiedService, Scanner scan){
 //		System.out.println("how many products you want to register");
 //		int n = scan.nextInt();
 		System.out.println();
@@ -73,6 +73,57 @@ public class ClassifiedApp {
 				classified.setCreatedAt(Calendar.getInstance().getTime());
 				// classified.setStatus(ClassifiedStatus.ACTIVE);
 				Classified savedClassified = classifiedService.createClassified(classified);
+				System.out.println(savedClassified);
+				System.out.println("Wow! Your classified added successfully");
+				System.out.println("Do you want to add one more classified: y/n");
+				s = scan.next();
+			} catch(IOException e) {
+				String msg="Invalid entry";
+				System.out.println(msg);
+				DbLog.logger().classfied(msg+" "+e.getMessage());
+				cont--;
+			}catch (Exception e) {
+				// TODO: handle exception\
+				//e.getMessage();
+				String msg="Constraints entry";
+				DbLog.logger().classfied(msg+" "+e.getMessage()+" "+e.getCause());
+				System.out.println(msg);
+				cont--;
+			}
+			cont++;
+		} while ("Y".equalsIgnoreCase(s));
+		System.out.println("You have added " + cont + " Classifieds");
+	}
+	
+	public static void createClassifiedAdmin(ClassifiedService classifiedService, Scanner scan){
+		System.out.println();
+		System.out.println("***Creating a New Classified for Admin***");
+		String s = "N";
+		int cont = 0;
+		do {
+			Classified classified = new Classified();
+			// for (int i = 0; i < n; i++) {
+			try {
+				BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));// This can read input from
+																								// anywhere
+				System.out.println("PLEASE CHOOSE YOUR CATEGORY:");
+				for (CategoryType cattype : CategoryType.values()) {
+					System.out.println(String.format("Press %d to select category %s", cattype.ordinal() + 1,
+							cattype.getCategoryType()));
+				}
+				System.out.println("Please select Category from above:");
+				int selCat = Integer.parseInt(reader.readLine()); // to convert string into int
+				classified.setCategory(CategoryType.getCategoryType(selCat));
+				System.out.println("Please enter price for your product");
+				classified.setPrice(Double.parseDouble(reader.readLine()));
+				System.out.println("Please enter Title");
+				classified.setTitle(reader.readLine());
+				System.out.println("Please Add some discription of your product");
+				classified.setDescription(reader.readLine());
+				classified.setCreatedBy("ADMIN");
+				classified.setCreatedAt(Calendar.getInstance().getTime());
+				classified.setStatus(ClassifiedStatus.ACTIVE);
+				Classified savedClassified = classifiedService.createClassifiedAdmin(classified);
 				System.out.println(savedClassified);
 				System.out.println("Wow! Your classified added successfully");
 				System.out.println("Do you want to add one more classified: y/n");

@@ -16,6 +16,12 @@ public class ClassifiedServiceImpl implements ClassifiedService {
 		ClassifiedRepository classifiedRepository = new ClassifiedRepositoryImpl();
 		return classifiedRepository.createClassified(classified);
 	}
+	// create for admin
+		@Override
+		public Classified createClassifiedAdmin(Classified classified) throws SQLException{
+			ClassifiedRepository classifiedRepository = new ClassifiedRepositoryImpl();
+			return classifiedRepository.createClassifiedAdmin(classified);
+		}
 
 	// print
 	@Override

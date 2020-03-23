@@ -4,8 +4,30 @@ import java.util.Date;
 
 public class Classifieds {
     int Classified_id, Price;
-    String Title, Description, Category, Publisher, Status;
-    Date Date_Published;
+    String Title;
+    String Description;
+    String Category;
+    String Publisher;
+    String Status;
+
+    public String getModifier() {
+        return Modifier;
+    }
+
+    public void setModifier(String modifier) {
+        Modifier = modifier;
+    }
+
+    public Date getDate_Modified() {
+        return Date_Modified;
+    }
+
+    public void setDate_Modified(Date date_Modified) {
+        Date_Modified = date_Modified;
+    }
+
+    String Modifier;
+    Date Date_Published, Date_Modified;
 
     public int getClassified_id() {
         return Classified_id;

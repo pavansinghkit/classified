@@ -15,4 +15,5 @@ public interface ClassifiedRepository {
 	Classified updateClassifiedPrice(Classified classified);
 	Classified updateClassifiedCategory(Classified classified);
 	Classified updateClassifiedDescription(Classified classified);
+	Classified createClassifiedAdmin(Classified classified);
 }

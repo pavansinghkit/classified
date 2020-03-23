@@ -91,7 +91,7 @@ public class ClassifiedRepositoryImpl implements ClassifiedRepository {
 		}
 		return classifiedListByUserName;
 	}
-	// ************************ create *****************************//
+	// ************************ create for user*****************************//
 
 	private static final String INSERT_SQL = "INSERT INTO classified_info(title, price, description, category, created_at, created_by, status) values(?, ?, ?, ?, ?, ?, ?) ";
 
@@ -127,7 +127,41 @@ public class ClassifiedRepositoryImpl implements ClassifiedRepository {
 		return classified;
 	}
 
+	// ************************ create for Admin*****************************//
+	
+	private static final String INSERT_SQL_ADMIN = "INSERT INTO classified_info(title, price, description, category, created_at, created_by) values(?, ?, ?, ?, ?, ?) ";
+
+	@Override
+	public Classified createClassifiedAdmin(Classified classified) {
+		Connection connection = MySQLJDBCUtil.getConnection();
+		if (classified != null) {
+			try (PreparedStatement pst = connection.prepareStatement(INSERT_SQL_ADMIN, Statement.RETURN_GENERATED_KEYS)) {
+				pst.setString(1, classified.getTitle());
+				pst.setDouble(2, classified.getPrice());
+				pst.setString(3, classified.getDescription());
+				pst.setString(4, classified.getCategory().toString());
+				pst.setDate(5, new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+				pst.setString(6, classified.getCreatedBy());
+				//pst.setString(7, classified.getStatus().ACTIVE.toString());
+
+				int numRowsAffected = pst.executeUpdate();
+				try (ResultSet rs = pst.getGeneratedKeys()) {
+					if (rs.next()) {
+						classified.setId(rs.getInt(1));
+					}
+				} catch (SQLException s) {
+					s.printStackTrace();
+				}
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return classified;
+	}
+	
 	// ***************************update all fields******************************//
+	
 	private static String sqlUpdate = ("update classified_info set title=?,price=?,description=?,category=?, modified_at =?, modified_by= ? where classified_id=?");
 
 	@Override
